@@ -1,0 +1,34 @@
+{
+  "pokemons": [
+    {
+      "id": 8,
+      "name": "Abo",
+      "hp": 16,
+      "cp": 4,
+      "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/023.png",
+      "types": [
+        "Poison"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Sabelette",
+      "hp": 19,
+      "cp": 3,
+      "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/027.png",
+      "types": [
+        "Normal"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Debilos5",
+      "hp": "25",
+      "cp": 5,
+      "picture": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/035.png",
+      "types": [
+        "Fée"
+      ]
+    }
+  ]
+}

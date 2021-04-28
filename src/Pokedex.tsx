@@ -1,8 +1,8 @@
-import React, {FunctionComponent, useState, useEffect, MouseEvent, ChangeEvent} from 'react';
+import React from 'react';
 
 import PokemonsList from './components/PokemonsList';
 
-const Pokedex: FunctionComponent = () => {
+const  Pokedex = () => {
 
     return (
         <div>            

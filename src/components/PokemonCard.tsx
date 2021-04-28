@@ -1,28 +1,38 @@
-import React, {FunctionComponent, useEffect, useState} from "react";
+import React, {FunctionComponent, useState} from "react";
 import Pokemon from "../models/pokemon";
 import "./pokemon-card.css";
-
+import formatType from "../commons/formatType";
+import formatDate from "../commons/formatDate";
+import { useHistory } from "react-router";
 
 type Props = {
     pokemon: Pokemon;
     borderColor?: string;
     bordertype?: string;
 }
+
 const PokemonCard : FunctionComponent<Props> = ({pokemon, borderColor = "#009688", bordertype ="ridge"}) =>{
     const [color, setColor] = useState<string>();
     const [type, setType] = useState<string>();
 
-    function showBorder(){
+    const history = useHistory();
+
+    const showBorder = ()=> {
         setColor(borderColor);
         setType(bordertype);
     }
-    function hideBorder(){
+    const hideBorder = () =>{
         setColor("#f5f5f5");
         setType("solid")
     }
+
+    const viewDetails = (id: number) =>{
+        history.push("/pokemons/" + id);
+    }
+
     
     return (
-        <div key={pokemon.id} className="col s6 m4" onMouseEnter={showBorder} onMouseLeave={hideBorder}>
+        <div key={pokemon.id} className="col s6 m4" onClick={()=> viewDetails(pokemon.id)} onMouseEnter={showBorder} onMouseLeave={hideBorder} >
             <div className="card horizontal" style={{borderColor: color, borderStyle: type}}>
                 
                     <div className="card-image">
@@ -32,8 +42,13 @@ const PokemonCard : FunctionComponent<Props> = ({pokemon, borderColor = "#009688
                         <div className="card-content">
                             <p>{pokemon.name}</p>
                             <p>
-                                <small> {pokemon.created.toString()} </small>
+                                <small> {formatDate(pokemon.created)} </small>
                             </p>
+                            {pokemon.types.map(type =>(
+                                <span key={type} className={formatType(type)}>
+                                    {type}
+                                </span>
+                            ))}
                         </div>
                     </div>
                 
@@ -42,3 +57,5 @@ const PokemonCard : FunctionComponent<Props> = ({pokemon, borderColor = "#009688
     );
 }
 export default PokemonCard;
+
+
